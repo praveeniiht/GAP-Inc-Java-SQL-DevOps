@@ -1,0 +1,169 @@
+Maven
+------
+Maven is a project management and comprehension tool that provides developers a complete build lifecycle 
+framework. 
+
+Development team can automate the project's build infrastructure in almost no time as Maven uses 
+a standard directory layout and a default build lifecycle.
+
+Maven provides developers ways to manage the following −
+
+    1. Builds
+    2. Documentation
+    3. Reporting
+    4. Dependencies
+    5. SCMs
+    6. Releases
+    7. Distribution
+    8. Mailing list
+
+
+Features of Maven
+------------------
+    Simple project setup that follows best practices.
+
+    Consistent usage across all projects.
+
+    Dependency management including automatic updating.
+
+    A large and growing repository of libraries.
+
+    Extensible, with the ability to easily write plugins in Java or scripting languages.
+
+    Instant access to new features with little or no extra configuration.
+
+    Model-based builds − Maven is able to build any number of projects into predefined output types such as 
+    jar, war, metadata.
+
+    Coherent site of project information − Using the same metadata as per the build process, maven is able 
+    to generate a website and a PDF including complete documentation.
+
+    Release management and distribution publication − Without additional configuration, maven will integrate 
+    with your source control system such as CVS and manages the release of a project.
+
+    Backward Compatibility − You can easily port the multiple modules of a project into Maven 3 from older 
+    versions of Maven. It can support the older versions also.
+
+    Automatic parent versioning − No need to specify the parent in the sub module for maintenance.
+
+    Parallel builds − It analyzes the project dependency graph and enables you to build schedule modules in 
+    parallel. Using this, you can achieve the performance improvements of 20-50%.
+
+    Better Error and Integrity Reporting − Maven improved error reporting, and it provides you with a link 
+    to the Maven wiki page where you will get full description of the error.
+
+POM
+---
+
+POM stands for Project Object Model. 
+
+It is fundamental unit of work in Maven. 
+
+It is an XML file that resides in the base directory of the project as pom.xml.
+
+The POM contains information about the project and various configuration detail used by Maven to build the 
+project(s).
+
+Some of the configuration that can be specified in the POM are following −
+
+    1. project dependencies
+    2. plugins
+    3. goals
+    4. build profiles
+    5. project version
+    6. developers
+    7. mailing list
+
+Example:
+--------
+<project xmlns = "http://maven.apache.org/POM/4.0.0"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0
+   http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+
+   <groupId>com.companyname.project-group</groupId>
+   <artifactId>project</artifactId>
+   <version>1.0</version>
+</project>
+
+
+Build Life Cycle
+----------------
+A Build Lifecycle is a well-defined sequence of phases, which define the order in which the goals are to be executed. 
+
+Here phase represents a stage in life cycle. 
+
+As an example, a typical Maven Build Lifecycle consists of the following sequence of phases.
+
+Phase					Handles						Description
+-----					-------						------------
+prepare-resources 		resource copying 				Resource copying can be customized in this phase.
+
+validate 					Validating the information 		Validates if the project is correct and if all necessary 
+													information is available.
+
+compile 					compilation 					Source code compilation is done in this phase.
+
+Test 					Testing 						Tests the compiled source code suitable for testing 
+													framework.
+
+package 					packaging 					This phase creates the JAR/WAR package as mentioned in the 
+													packaging in POM.xml.
+
+install 					installation 					This phase installs the package in local/remote maven 
+													repository.
+
+Deploy 					Deploying 					Copies the final package to the remote repository.
+
+
+What is a Maven Repository?
+
+In Maven terminology, a repository is a directory where all the project jars, library jar, plugins or 
+any other project specific artifacts are stored and can be used by Maven easily.
+
+Maven repository are of three types.
+
+1. Local
+
+2. Central
+
+3. Remote
+
+
+
+Maven Commands
+--------------
+1. mvn --version
+
+2. mvn clean - This command cleans the maven project by deleting the target directory.
+
+3. mvn compiler:testCompile - This commands compiles the test class of the maven project.
+
+4. mvn package - This command builds the maven project and packages them into a JAR, WAR, etc.
+
+5. mvn install - This command builds the maven project and installs the project files (JAR, WAR, pom.xml, etc) 
+                 to the local repository.
+
+6. mvn deploy - This command is used to deploy the artifact to the remote repository. 
+                The remote repository should be configured properly in the project pom.xml file 
+                distributionManagement tag. The server entries in the maven settings.xml file is used to 
+                provide authentication details.
+
+7. mvn validate - This command validates the maven project that everything is correct and all the necessary 
+                  information is available
+
+8. mvn dependency:tree - This command generates the dependency tree of the maven project.
+
+9. mvn archetype:generate  - Maven archetypes is a maven project templating toolkit. 
+                             We can use this command to generate a skeleton maven project of different types,
+                             such as JAR, web application, maven site, etc.
+
+Example:    mvn archetype:generate -DgroupId=com.examples.spring -DartifactId=spring-test -DarchetypeArtifactId=maven-archetype-quickstart
+
+10. mvn build - 
+
+11. mvn compile - It’s used to compile the source Java classes of the project.
+
+12. mvn exec:java -Dexec.mainClass="com.examples.spring.App"  
+
