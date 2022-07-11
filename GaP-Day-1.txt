@@ -1,0 +1,424 @@
+3 days -- Java  (prog fundamentals, oops, jdbc)
+
+2 days -- SQL   (dml,ddl,tcl and joins, normalization, usecase)
+
+---------------------------------------------------------------------------
+
+1. Introduction of Java
+2. Basic Programming concepts
+3. OOPS -- Classes, objects and constructors, static and this keyword
+
+
+COBOL
+Dbase
+foxpro
+C
+C++
+
+
+
+1. Microsoft     ---- VB (UI+BL) ---MySQlServer  -----> VB.net C# 
+2. Sun Mircosystems  --- Oak    ---> java   (Open source)
+
+
+1995
+Java  
+
+java4
+
+
+java8   ---->new features 
+lambda, streams, parallel processing, concurrent processing, exception handling
+
+
+
+java11  ---Production support till java11
+
+
+Java18
+2022
+
+
+JDK   .  JRE
+JDK - Java Development Kit  --- facility to write and execute the java based programs
+JRE - Java Runtime Environment  -- Facilitates to excute the java based programs
+
+
+mov ax,r1
+mov bx,r1
+xor cx
+div dx
+
+int a,b,c;
+a=10;
+b=20;
+c=a/b;
+
+
+Datatypes and Variables
+Storage location
+Input and Output statements
+what is structure of the program
+
+IDE---> integrated development environment
+Eclipse
+IntelliJ
+VS 
+Wordpad++
+MyEclipse
+
+
+datatype variablename;
+int a,b;
+float x,y;
+boolean flag;
+
+a=10;
+b=20;
+x=20.345;
+flag=true;
+
+flag=20;  //error
+
+a=20.33; // not an error but decimal values are truncated.
+x=20; //valid 20.00
+
+lower case names should be given to variable names.
+camel case
+
+int firstNumber, secondNumber;
+
+
+Output Methods
+--------------
+int a=10;
+System.out.println("The value of a is "+ a);
+System.out.println("string to be output");
+
+
+The value of a is 10
+
+Input Methods
+-------------
+1. Scanner class
+2. Streams Readers
+
+Scanner sc = new Scanner(System.in);
+int a = sc.nextInt()
+float b = sc.nextFloat()
+doube d = sc.nextDouble()
+String str = sc.nextLine()  -- allwo string with spaces
+sc.next() ---dont take string with spaces
+
+class <classname>
+{
+	public static void main(String args[]){
+			//valid java statements;
+	}
+}
+class Test{
+	public static void main(String args[]){
+		System.out.println("Hello World...!");
+	}
+}
+Test.java
+javac Test.java  ---> Test.class  --JVM
+java Test   
+
+Control statements
+------------------
+which will control the flow of execution.
+
+s1;
+s2;
+s3;
+s4;
+s5;
+Conditional Based control statements  -- transfer the control based on a condition
+ex> if, switch, loops
+
+Unconditional Based control statements -- transfer irrespective of the condition,
+ex> break, continue, goto
+
+if---> It will select one block of out of two blocks. the selection of the block
+is purely depends on the condition provided.
+
+simple if, if else, else if , nested if
+
+simple if
+---------
+if(condition)
+{
+// true block statements;
+}
+next_statements;
+
+a=10,b=20;
+if(a<b)
+{
+	s.o.p("inside block");
+}
+sop("After the block");
+
+o/p---> inside block, After the block
+
+a=100,b=20;
+o/p--> After the block
+
+
+if..else
+--------
+if(condition)
+{
+	// true block statements;
+}
+else
+{
+	//false block statements;
+}
+next_statements;
+
+a=10,b=20;
+if(a<b)
+{
+	sop("b is bigger");
+}
+else
+{
+	sop("a is bigger");
+}
+sop("next statement");
+
+o/p
+b is bigger
+next statement
+
+a=101,b=20;
+
+o/p
+a is bigger
+next statement
+
+nested if
+----------
+if(condition1)
+{
+		if(condition2)
+		{
+			s1;
+		}
+		else
+		{
+			s2;
+		}
+}
+else{
+	 if(condition3)
+	  {
+			s3;
+		}
+	else
+	{
+		s4;
+	}
+}
+
+if c1--> true and c2--> true , c3-->true --> o/p-->s1
+if c1--> true and c2-->false, c3-->true--->o/p -->s2
+if c1-->false and c2-->true , c3-->true o/p-->s3
+if c1-->false and c2-->fase, c3-->false o/p-->s4
+
+else if ladder
+-------------
+if( c1)
+	s1;
+else if (c2)
+	s2;
+else if(c3)
+	s3;
+else if(c4)
+	s4;
+;
+;
+else if(cn)
+	 sn.
+else
+	sn+1;
+
+
+switch()
+--------
+Switch clause is used to select one block out of n blocks.
+
+switch(var/exp)
+{
+	
+case v1 : s1;break;
+case v2 : s2;break;
+case v3 : s3;break;
+;
+;
+case vn : sn;break;
+default: sn1;
+}
+
+int a=2;
+switch(a)
+{
+default:sop("no vechicle");
+case 1:sop("bus"); break;
+case 2: sop("car");
+case 3: sop("van");break;
+case 4: sop("truck");break;
+
+}
+
+
+a =1 , bus
+a= 2, car
+a=3, van
+
+car
+van
+
+a=7;
+
+no vechicle
+bus
+
+Loops
+-----
+It will allow a group of statements to repeat for a fixed number of times
+
+while(), do..while(), for()
+
+while(cond){
+		//statments;
+}  // zero or more times will be executed.
+
+do{
+	//statement;
+}while(cond);  // atleast one time guranteed.
+
+for
+---
+for(intializer;conditon;inc/dec){
+	//statements;
+}
+
+for(int i=1;i<=10;i++)
+	sop(i);
+1
+2
+;
+;
+9
+10
+
+
+for(datatype varibale:list)
+{
+	//statements;
+}
+
+int a[]={1,2,4,5,6,9};
+for(int x:a)
+{
+	sop(x);
+	sop("inside the loop");
+}
+
+
+
+collectionsOfValues.forEach(Supplier);
+a.forEach(System.out::println)
+
+
+String
+------
+char ch[20];
+
+String str="name";
+str.substring(1,4);---> ame
+
+String str = new String[10];
+
+Strings are immutable objects:
+Immutable means the contents of the string are not modified.
+
+charAt(index)---> return the charcter at the given position
+
+str.charAt(0)-->n
+str.indexOf('a');->1
+substring(-1,4);
+
+indian
+
+String
+StringBuffer
+StringBuilder
+
+
+
+
+
+Java Project
+Maven Project
+
+Assignments
+-----------
+1. Write a program to read a number , calculate the sum of squares of even digits (values) 
+   present in the given number.
+
+12345-->
+ 3*3 + 5*5  = 34
+
+
+2. Write a program to read a positive number as input and to get the reverse of the given 
+   number and return it as output.
+
+12345  ---> 54321
+
+
+
+3. Write a program to read a string  and to test whether first and last character are same. 
+   The string is said to be be valid if the 1st and last character are the same. 
+   Else the string is said to be invalid.
+tesla
+asia
+
+
+4. Given a method with string input. Write code to remove vowels from even position in the 
+   string.
+
+programming
+
+oi
+prgrammng
+
+
+
+5. Given a method with an int array. Write code to find the power of each individual element 
+   accoding to its position index, add them up and return as output
+ 
+int a[]={1,2,3,4,5};
+
+1-->0  + 2-->1  + 3-->2 +  4-->3 + 5-->4
+1+2+9+54+625=691
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
