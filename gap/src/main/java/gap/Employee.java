@@ -6,6 +6,15 @@ public class Employee {
 	private String department;
 	private String desgination;
 	static String organiation;
+	
+	static {
+		System.out.println("Inside the static block...");
+	}
+	
+	{
+		System.out.println("Inside the non static block...");
+		System.out.println("another line inside the non static block...");
+	}
 
 	public String getOrganiation() {
 		return organiation;
@@ -47,6 +56,7 @@ public class Employee {
 	}
 	public static void test() {
 		System.out.println("Inside the static test method...");
+		System.out.println(organiation);
 	}
 
 	public   void working() {
