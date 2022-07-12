@@ -1,0 +1,348 @@
+1. static ---- variables, methods, block
+2. constructor
+3. this keyword
+4. Inheritance and super keyword
+5. Abstract classes and Interfaces
+6. Lambda Expressions and Functional Interfaces
+7. Predefined functional interfaces: Predicate, Function, Consumer, Supplier
+8. Exception Handling.
+
+
+
+Constructor
+-----------
+Constructors are building blocks for java objects
+All objects in java are created using constructors.
+there are two types of constructors : 1. default constructor no arg constructor or 
+zero parametarized constructor and 2.Parameterized constructors.
+
+default constructors are either provided by user or system (java lang)
+parameterized constructors are explicitly provided by user only.
+
+constructors are just a special methods in the class, which have the same name as that of classname
+and doesnt have any return type including void.
+
+constructors are automatically executed when ever the objects are created.
+
+constructors can be overloaded.
+
+
+Polymorphism;
+-------------
+The ability of an entity to exists in more than one form.
+
+Compiletime polymorphism  -- The form to be selected if it is know at compilation time.
+Runtime polymorphism  -- The form to be selected it is known only at runtime.
+
+String str="praveen";
+int x=1000;
+float y = 10.345f;
+boolean flag=false;
+
+System.out.println(str);  // praveen
+System.out.println(x);//  1000
+
+public void sample(int x)
+{
+	//processing;
+
+}
+
+sample("praveen");
+
+System.out.println(10+20);  // 30
+System.out.pritnln("Hello "+"world");  //  Hello World
+
+
++   ----->   
+
+
+
+When two or more methods are having the same name and if they diff in any one of the following
+then those methods are said to be overloaded.
+
+1. If there is a change in the datatype
+2. if there is a change in the number of arguments
+3. if there is a change in the order of arguments.
+
+
+public void sample(int a, int b)
+{
+
+}
+public void sample(int z, int y)
+{
+
+
+}
+
+
+
+public int  sample(int b, int c){
+
+
+}
+
+public float sample(float ch){
+
+
+}
+
+this() method call
+-------------------
+1. method call must be the first line of statement
+2. recursive call is not allowed.
+3. cycle or loop formation is also not allowed.
+
+Relations
+-----------
+1. Has-a -- One object is used as member to another class, then this is called has-a relation
+2. Is-a  --- one class code is inherited to another class code (Inheritance)
+3. uses  --- one class object is passed as parameter to another class's method.
+
+It is the process of acquiring the properties from one class to another class
+The class which is providing the data is called base / parent class
+the class which is acquiring the data of methods is called derived / child class
+
+PermanentEmployee
+HourlyBasedEmployee
+TemporaryEmployee
+
+1.constructors are called from parent to child level
+
+
+
+Overriding: It is the process of supressing the base class data in the derived class
+when both are having the same name
+
+
+	super is the keyword which is used to refer the immediate parent class data
+runtime polymorphism
+
+
+In java Object class is the base class for all the classes, including user defined classes also.
+It will be implicityly inherited to all the classes by default.
+
+
+methods in object class
+---------------------------
+1. getClass()  --return the name of the class
+2. hashCode()  -- it returns the hascode of the object id
+3. equals()  -- it compares two objects
+4. toString()--- it will display the contents of the object  -> it retuns the object id
+
+public String toString(){
+
+  return string;
+}
+
+5. wait() // 3 forms of wait
+6. notify()
+7. notifyAll()
+
+
+Interfaces
+----------
+Is an java element which consists of all abstract methods.
+A method which doest have any body or implementation is called abstract method.
+Interfaces are used to define the template or they will provide the diff implementations 
+for the same methods.
+
+interface keyword we will define the interfaces
+
+interface <interfacename>
+{
+	// abstract methods;
+
+}
+
+interface Shop{
+		public void selectGoods();
+		public void payment();
+		public void shipment();
+}
+
+objects are not directly created for interfaces.
+inherit the abstract methods into a child classes and override the abstract methods.
+
+class VillageShop implements Shop{
+
+	public void selectGoods(){
+			System.out.println("goods are selected from shop");
+	}
+	public void payment(){
+			System.out.println("cash payment is accepted");
+	}
+	public void shipment(){
+			System.out.println("goods are delivered on thier own risk");
+	}
+}
+
+class CityShop implements Shop{
+
+	public void selectGoods(){
+			System.out.println("goods are selected from www.shops.com");
+	}
+	public void payment(){
+			System.out.println("Online payments are accepted");
+	}
+	public void shipment(){
+			System.out.println("goods are delivered through bluedart courier");
+	}
+}
+
+
+abstract class AbsExample{
+		public void test1(){
+
+		}
+		public void test2(){
+
+		}
+		abstract public void test3();
+}
+
+class TestAbs1 extends AbsExample{
+	public void test3(){
+
+	}
+}
+
+TestAbs1 t= new TestAbs1();
+t.test1();-->execute from the base clas
+t.test2(); --> from base class
+t.test3();-->executes from derived class
+
+
+default methods
+static methods
+
+
+Lambda Expression
+-----------------
+
+public void display(){
+		System.out.println("welcome to java");
+		System.out.pritln("Hello Lambda");
+}
+
+()->{
+		System.out.println("welcome to java");
+		System.out.pritln("Hello Lambda");
+}
+
+
+public void display(){
+		System.out.pritntln("hello");
+}
+
+()->{
+		System.out.pritntln("hello");
+}
+// if there is only one statement in the body, then {} parenthesis can be removed.
+()->System.out.println("hello");
+
+
+public void add(int a, int b){
+		System.out.println("The sum is :"+(a+b));
+}
+
+
+(int a, int b) ->{
+		System.out.println("The sum is :"+(a+b));
+}
+
+// there is no need to explictly refer the data type to the parameters
+
+(a,b)-> System.out.println("The sum is :"+(a+b));
+
+
+
+public int add(int a, int b)
+{
+	return a+b;
+}
+
+
+(a,b)->return a+b;
+
+// if there is only one statement with return keyword then return can be removed
+
+(a,b)->a+b;
+
+
+public boolean check(int a, int b)
+{
+		if(a < b)
+			return true;
+		else
+			return false;
+}
+
+
+(a,b)->{
+		if(a < b)
+			return true;
+		else
+			return false;
+}
+
+
+// if your code has only if clause return the true or false, then we can remvoe the if also.
+
+(a,b)-> a<b;
+
+
+(a,b)->a<b?System.out.println("a is smaller"):System.out.pritln("b is smaller");
+
+
+
+Lambda expressions are used to implement Functional Interfaces only
+
+Functional interfaces are those interfaces which consists of only one abstract method.
+
+
+@FunctionalInterface
+interface Maths{
+		public int add(int a, int b);
+}
+
+
+1. Predicate
+2. Function
+3. Supplier
+4. Consumer
+
+Predicate: It is a predefined functional interface which has only one method called test, it can take
+any datatype as input and return only boolean value.
+
+@FunctionalInterface
+public interface Predicate<T>{
+	public boolean test(T t);
+}
+
+
+Predicate<Integer> p1 = a->a%2!=0;
+sysout(p1.test(20));
+
+Predicate<String> p2 = s->s.length>10;
+sysoutp(p2.test("praveen");
+sysout(p2.test("alpha program");
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
