@@ -1,21 +1,21 @@
 CREATE TABLE air_credit_card_details
 (
 profile_id VARCHAR2(10) NOT NULL,
-card_number number(10),
-card_type VARCHAR2(45),
-expiration_month number(10),
-expiration_year number(5)
+card_number number(10) not null,
+card_type VARCHAR2(45) not null,
+expiration_month int,
+expiration_year int
 );
 
 CREATE TABLE air_passenger_profile
 (
 profile_id VARCHAR(10) NOT NULL ,
-password VARCHAR(45) NULL ,
-first_name VARCHAR(45) NULL ,
-last_name VARCHAR(45) NULL ,
-address VARCHAR(45) NULL ,
-mobile_number number(10) NULL ,
-email_id VARCHAR(45) NULL 
+password VARCHAR(45) not NULL ,
+first_name VARCHAR(45) not NULL ,
+last_name VARCHAR(45) not NULL ,
+address VARCHAR(45) not NULL ,
+mobile_number int not NULL ,
+email_id VARCHAR(45) not NULL 
 );
 
 CREATE TABLE air_ticket_info
@@ -23,15 +23,15 @@ CREATE TABLE air_ticket_info
 ticket_id VARCHAR(45) NOT NULL ,
 profile_id VARCHAR(10) NULL ,
 flight_id VARCHAR(45) NULL ,
-flight_departure_date DATE NULL ,
-status VARCHAR(45) NULL 
+flight_departure_date DATE not NULL ,
+status VARCHAR(45)
 );
 
 CREATE TABLE air_flight_details
 (
 flight_id VARCHAR(45) NOT NULL ,
-flight_departure_date DATE NULL ,
-price number(10,2) NULL ,
+flight_departure_date DATE not NULL ,
+price int NULL ,
 available_seats INT NULL 
 )
 
@@ -40,13 +40,13 @@ CREATE TABLE air_flight
 (
 flight_id VARCHAR(45) NOT NULL ,
 airline_id VARCHAR(45) NULL ,
-airline_name VARCHAR(45) NULL ,
-from_location VARCHAR(45) NULL ,
-to_location VARCHAR(45) NULL ,
-departure_time varchar(20) NULL ,
-arrival_time varchar(20) NULL ,
-duration varchar(20) NULL ,
-total_seats number(9) NULL 
+airline_name VARCHAR(45),
+from_location VARCHAR(45),
+to_location VARCHAR(45),
+departure_time varchar(20),
+arrival_time varchar(20),
+duration varchar(20),
+total_seats int
 );
 
 
