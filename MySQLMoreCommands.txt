@@ -206,3 +206,154 @@ VALUES
 	('AI for Marketing','2019-08-01','2019-12-31'),
 	('ML for Sales','2019-05-15','2019-11-20');
 
+
+ENUM Datatype
+-------------
+
+CREATE TABLE table_name (
+    ...
+    col ENUM ('value1','value2','value3'),
+    ...
+);
+enum Weekdays = (Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday)
+
+Sunday --->1
+Monday ---> 2
+Tuesday -->3
+
+Enum day = Sunday+1;
+
+
+CREATE TABLE tickets (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    priority ENUM('Low', 'Medium', 'High') NOT NULL
+)
+
+INSERT INTO tickets(title, priority) VALUES('Scan virus for computer A', 'High');
+INSERT INTO tickets(title, priority) VALUES('Upgrade Windows OS for all computers', 1);
+
+instead of using the Low enumeration value, we used value 1. Since Low is mapped to 1, it is acceptable.
+
+INSERT INTO tickets(title, priority)
+VALUES('Install Google Chrome for Mr. John', 'Medium'),
+      ('Create a new user for the new employee David', 'High');
+
+INSERT INTO tickets(title) VALUES('Refresh the computer of Ms. Lily');  
+since priority is defined as not null mysql remembers first enum value as default value and inserts the same
+value in its absence.
+
+MySQL INSERT ON DUPLICATE KEY UPDATE example
+---------------------------------------------
+CREATE TABLE devices (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+SELECT id, name FROM devices;
+INSERT INTO devices(name) VALUES ('Printer') ON DUPLICATE KEY UPDATE name = 'Printer';
+
+If there is no name with Printer value is there then it will inserts as Printer else ignores.
+
+INSERT INTO devices(id,name) VALUES (2,'Printer') ON DUPLICATE KEY UPDATE name = 'Central Printer';
+Here if an row with printer exists then it will inserts as Central Printer
+
+MySQL INSERT IGNORE example
+---------------------------
+CREATE TABLE subscribers (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(50) NOT NULL UNIQUE
+);
+
+INSERT INTO subscribers(email) VALUES('john.doe@gmail.com');
+
+
+INSERT INTO subscribers(email)
+VALUES('john.doe@gmail.com'), 
+      ('jane.smith@ibm.com');
+
+Error Code: 1062. Duplicate entry 'john.doe@gmail.com' for key 'email'
+
+INSERT IGNORE INTO subscribers(email)
+VALUES('john.doe@gmail.com'), 
+      ('jane.smith@ibm.com');
+
+1 row(s) affected, 1 warning(s): 1062 Duplicate entry 'john.doe@gmail.com' for key 'email' Records: 2  
+Duplicates: 1  Warnings: 1
+
+Another advantage of insert ignore is, when you try to insert data with invalid size, it truncates and
+inserts and issues a warning.
+
+CREATE TABLE tokens (
+    s VARCHAR(6)
+);
+
+INSERT INTO tokens VALUES('abcdefg');
+Error Code: 1406. Data too long for column 's' at row 1
+
+
+INSERT IGNORE INTO tokens VALUES('abcdefg');
+MySQL truncated data before inserting it into the tokens table. In addition, it issues a warning.
+
+
+MySQL ON DELETE CASCADE example
+--------------------------------
+CREATE TABLE buildings (
+    building_no INT PRIMARY KEY AUTO_INCREMENT,
+    building_name VARCHAR(255) NOT NULL,
+    address VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE rooms (
+    room_no INT PRIMARY KEY AUTO_INCREMENT,
+    room_name VARCHAR(255) NOT NULL,
+    building_no INT NOT NULL,
+    FOREIGN KEY (building_no)
+        REFERENCES buildings (building_no)
+        ON DELETE CASCADE
+);
+
+INSERT INTO buildings(building_name,address)
+VALUES('ACME Headquaters','3950 North 1st Street CA 95134'),
+      ('ACME Sales','5000 North 1st Street CA 95134');
+
+INSERT INTO rooms(room_name,building_no)
+VALUES('Amazon',1),
+      ('War Room',1),
+      ('Office of CEO',1),
+      ('Marketing',2),
+      ('Showroom',2);
+
+DELETE FROM buildings WHERE building_no = 2;
+As you can see, all the rows that reference to building_no 2 were automatically deleted.
+
+MySQL ON DELETE CASCADE example
+--------------------------------
+CREATE TABLE buildings (
+    building_no INT PRIMARY KEY AUTO_INCREMENT,
+    building_name VARCHAR(255) NOT NULL,
+    address VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE rooms (
+    room_no INT PRIMARY KEY AUTO_INCREMENT,
+    room_name VARCHAR(255) NOT NULL,
+    building_no INT NOT NULL,
+    FOREIGN KEY (building_no)
+        REFERENCES buildings (building_no)
+        ON DELETE CASCADE
+);
+
+INSERT INTO buildings(building_name,address)
+VALUES('ACME Headquaters','3950 North 1st Street CA 95134'),
+      ('ACME Sales','5000 North 1st Street CA 95134');
+
+INSERT INTO rooms(room_name,building_no)
+VALUES('Amazon',1),
+      ('War Room',1),
+      ('Office of CEO',1),
+      ('Marketing',2),
+      ('Showroom',2);
+
+DELETE FROM buildings WHERE building_no = 2;
+As you can see, all the rows that reference to building_no 2 were automatically deleted.
