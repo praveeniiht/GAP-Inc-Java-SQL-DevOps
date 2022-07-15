@@ -1,8 +1,8 @@
 CREATE TABLE air_credit_card_details
 (
-profile_id VARCHAR2(10) NOT NULL,
-card_number number(10) not null,
-card_type VARCHAR2(45) not null,
+profile_id VARCHAR(10) NOT NULL,
+card_number int not null,
+card_type VARCHAR(45) not null,
 expiration_month int,
 expiration_year int
 );
