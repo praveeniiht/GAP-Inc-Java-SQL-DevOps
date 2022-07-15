@@ -14,7 +14,6 @@ password VARCHAR(45) not NULL ,
 first_name VARCHAR(45) not NULL ,
 last_name VARCHAR(45) not NULL ,
 address VARCHAR(45) not NULL ,
-mobile_number int not NULL ,
 email_id VARCHAR(45) not NULL 
 );
 
@@ -113,13 +112,13 @@ INSERT INTO air_ticket_info VALUES
 
 INSERT INTO air_passenger_profile VALUES
 (1, 'godbless', 'John', 'Stuart','Street 21, Near Bus Stop-Hyderabad-432126',
-9865263251, 'john@gmail.com'),
+ 'john@gmail.com'),
 (2, 'heyyaa', 'Robert', 'Clive', 'Sector 3, Technopolis-Kolkata-700102',
-9733015875, 'robert@yahoo.com'),
+ 'robert@yahoo.com'),
 (3, 'hello123', 'Raj', 'Sharma', 'House No. 3, Anna Nagar-Kochi-452314',
-9775470232, 'raj3452@hotmail.com'),
+'raj3452@hotmail.com'),
 (4, 'yesboss', 'Sanjay', 'Mittal','21 Cauunaught Place-Delhi-144985',
-9856856321, 'sanjay@yahoo.com'),
+ 'sanjay@yahoo.com'),
 (5, 'imhere', 'Tony', 'Stark', '51A, Greams Lane-Chennai-144587',
-9832015785, 'tony@gmail.com');
+ 'tony@gmail.com');
 
